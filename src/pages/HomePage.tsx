@@ -3,6 +3,8 @@ import appDownloadImage from "../assets/appDownload.png"
 import SearchBar from "@/components/SearchBar"
 
 const HomePage = () => {
+  const handleSearchSubmit = () => {}
+
   return (
     <div className="flex flex-col gap-12">
       <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col text-center gap-5 -mt-16">
@@ -12,7 +14,7 @@ const HomePage = () => {
         <span className="text-lg md:text-xl">
           Food is just a click away!
         </span>
-        <SearchBar />
+        <SearchBar placeholder="Search by City or Town" onSubmit={handleSearchSubmit} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
