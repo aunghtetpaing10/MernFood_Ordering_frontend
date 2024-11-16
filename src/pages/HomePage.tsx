@@ -1,9 +1,16 @@
-import landingImage from "../assets/landing.png"
-import appDownloadImage from "../assets/appDownload.png"
-import SearchBar from "@/components/SearchBar"
+import landingImage from "../assets/landing.png";
+import appDownloadImage from "../assets/appDownload.png";
+import SearchBar, { SearchForm } from "@/components/SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const handleSearchSubmit = () => {}
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (serachFormValues: SearchForm) => {
+    navigate({
+      pathname: `/search/${serachFormValues.searchQuery}`,
+    });
+  };
 
   return (
     <div className="flex flex-col gap-12">
@@ -11,10 +18,11 @@ const HomePage = () => {
         <h1 className="font-bold text-4xl md:text-5xl text-orange-500 tracking-tight">
           Tuck into a takeaway today
         </h1>
-        <span className="text-lg md:text-xl">
-          Food is just a click away!
-        </span>
-        <SearchBar placeholder="Search by City or Town" onSubmit={handleSearchSubmit} />
+        <span className="text-lg md:text-xl">Food is just a click away!</span>
+        <SearchBar
+          placeholder="Search by City or Town"
+          onSubmit={handleSearchSubmit}
+        />
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
@@ -24,13 +32,14 @@ const HomePage = () => {
             Order takeaway even faster!
           </span>
           <span>
-            Download the MernEats App for faster ordering and personalized recommendations.
+            Download the MernEats App for faster ordering and personalized
+            recommendations.
           </span>
           <img src={appDownloadImage} />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
